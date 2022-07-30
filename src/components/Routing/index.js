@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import Content from "../Content";
 import Homepage from "../Homepage";
+import Content from "../Content";
 
 export default function Routing() {
   return (
