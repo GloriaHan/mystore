@@ -12,8 +12,8 @@ export default function Routing() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />}>
-          <Route index element={<Navigate to="products" />} />
-          <Route path="products" element={<Contents />}>
+          <Route index element={<Navigate to="mystore" />} />
+          <Route path="mystore" element={<Contents />}>
             <Route index element={<Navigate to="welcome" />} />
             <Route index path="welcome" element={<Welcome />} />
             <Route path="products">

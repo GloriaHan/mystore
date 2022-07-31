@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Root,Img, Product } from "./Content.style";
 
 export default function Content() {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState();
   const { category } = useParams();
-
-  console.log(category);
 
   useEffect(() => {
     (async () => {
@@ -14,6 +13,8 @@ export default function Content() {
         category ? `/category/${category}` : ""
       }`;
       setLoading(true);
+      console.log(url);
+
       const res = await fetch(url);
       const data = await res.json();
       setLoading(false);
@@ -22,13 +23,19 @@ export default function Content() {
   }, [category]);
 
   return (
-    <div>
+    <Root>
       {products &&
         products.map((item) => (
-          <span key={item.id}>
-            <p>{item.price}</p>
-          </span>
+          
+          <Product key={item.id}>
+            <span >
+              <Img src={item.image} alt={item.title} />
+              <p>{item.title}</p>
+              <p>${item.price}</p>
+              {/* <p>{item.description}</p> */}
+            </span>
+          </Product>
         ))}
-    </div>
+    </Root>
   );
 }

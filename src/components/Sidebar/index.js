@@ -4,7 +4,6 @@ import { Root, List, StyledLink } from "./SideBar.style";
 export default function Sidebar() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState();
-
   useEffect(() => {
     (async () => {
       const url = `${process.env.REACT_APP_BASE_URL}/products/categories`;
@@ -19,8 +18,9 @@ export default function Sidebar() {
   return (
     <Root>
       <List>
+      <StyledLink to="/mystore/products">All porducts</StyledLink> 
         {categories?.map((category) => (
-          <StyledLink to={`/products/products/${category}`}>
+          <StyledLink key={category} to={`/mystore/products/${category}`}>
             {category}
           </StyledLink>
         ))}

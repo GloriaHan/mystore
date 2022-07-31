@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Root = styled.div`
   width: 100%;
-  background-color: green;
-  width: 200px;
-  height: 100%;
-  padding: 10px;
+  background-color: rgba(255, 100, 100, 0.2);
 `;
 
 export const List = styled.div`
