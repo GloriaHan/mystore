@@ -1,13 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Header from "../Header";
+import Footer from "../Footer";
+import { Root, Content } from "./Homepage.style";
 
 export default function Homepage() {
   return (
-    <div>
-      <h1> Homepage</h1>
-      <h2>WELCOME TO THE OUR STORE!</h2>
-
-      <Link to="/products">products</Link>
-    </div>
+    <Root>
+      <Header />
+      <Content>
+        <Outlet />
+      </Content>
+      <Footer />
+    </Root>
   );
 }
