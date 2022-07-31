@@ -25,12 +25,7 @@ export default function Content() {
 
   return (
     <div>
-      <button
-        className="inline-block px-4 py-2 rounded-lg bg-indigo-500 text-white shadow-lg"
-        onClick={() => fetchInfo()}
-      >
-        get info
-      </button>
+      <button onClick={() => fetchInfo()}>get info</button>
       {products &&
         products.map((item) => (
           <span key={item.id}>
