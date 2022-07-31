@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Root,Img, Product } from "./Content.style";
+import { Root,Img,Title, Product } from "./Content.style";
 
 export default function Content() {
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ export default function Content() {
           <Product key={item.id}>
             <span >
               <Img src={item.image} alt={item.title} />
-              <p>{item.title}</p>
+              <Title>{item.title}</Title>
               <p>${item.price}</p>
               {/* <p>{item.description}</p> */}
             </span>
