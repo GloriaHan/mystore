@@ -16,7 +16,10 @@ export default function Routing() {
           <Route path="products" element={<Contents />}>
             <Route index element={<Navigate to="welcome" />} />
             <Route index path="welcome" element={<Welcome />} />
-            <Route path="all_products" element={<Content />} />
+            <Route path="products">
+              <Route path=":category" element={<Content />} />
+              <Route path="" element={<Content />} />
+            </Route>
           </Route>
 
           <Route path="prodectdetail" element={<ProdectDetail />} />
