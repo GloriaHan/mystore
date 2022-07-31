@@ -7,9 +7,9 @@ export default function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage />}/>
         <Route path="products" element={<Content />} />.
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
     </BrowserRouter>
   );
