@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import { Root } from "./SideBar.style";
 
 export default function Sidebar() {
-  return (
-    <div>Sidebar</div>
-  )
+  return <Root>Sidebar</Root>;
 }
