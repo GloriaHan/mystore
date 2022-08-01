@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import Button from "@mui/material/Button";
 
 export const Root = styled.div`
   width: 100%;
   display: flex;
   padding: 16px;
   align-items: center;
-  background-image: linear-gradient(to right, #ffb900, #ffa700);
+  background-color: #0097a7;
   color: transparent;
 `;
 
@@ -15,8 +16,12 @@ export const Img = styled.img`
 `;
 
 export const SearchBar = styled.div`
-  width: 800px;
-  text-align: center;
+  display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: center;
+`;
 
+export const StyledButton = styled(Button)`
+  background-color: #3f51b5 !important;
 `;

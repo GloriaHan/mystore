@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+
 
 export const Root = styled.div`
-  width: 100%;
-  background-color: rgba(100,10,10,0.1);
+  width: 100%;  
 `;
 
 export const List = styled.div`
@@ -11,6 +10,4 @@ export const List = styled.div`
   flex-direction: column;
 `;
 
-export const StyledLink = styled(Link)`
-  text-decoration-line: none;
-`;
+

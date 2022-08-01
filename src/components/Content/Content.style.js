@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const Root = styled.div`
   display: flex;
   flex-wrap: wrap;
-
+  background-color: #e0f7fa;
+  padding:8px;
 `;
 
 export const Product = styled.button`
-  height: 200px;
-  width: 150px;
+  background-color: #FFFFFF;
   overflow: hidden;
-  padding:15px;
   margin: 10px;
+  border:hidden;
 `;
 
 export const Img = styled.img`
@@ -21,4 +21,4 @@ export const Img = styled.img`
 export const Title = styled.p`
   height: 30px;
   overflow: hidden;
-  `;
+`;

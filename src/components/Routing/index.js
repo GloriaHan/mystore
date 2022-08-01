@@ -22,7 +22,7 @@ export default function Routing() {
             </Route>
           </Route>
 
-          <Route path="prodectdetail" element={<ProdectDetail />} />
+          <Route path="products/:id" element={<ProdectDetail />} />
           <Route path="cart" element={<Cart />} />
         </Route>
 
