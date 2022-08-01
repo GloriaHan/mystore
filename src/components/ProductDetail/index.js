@@ -1,9 +1,16 @@
-import { Root, ImageContainer } from "./ProductDetail.style";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactImageMagnify from "react-image-magnify";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import Rating from "@mui/material/Rating";
+import {
+  Root,
+  ImageContainer,
+  Title,
+  Price,
+  RatingContainer,
+} from "./ProductDetail.style";
 
 export default function ProdectDetail() {
   const [loading, setLoading] = useState(false);
@@ -35,7 +42,8 @@ export default function ProdectDetail() {
                 flexWrap: "wrap",
                 "& > :not(style)": {
                   m: 1,
-                  width: 300,
+                  width: 400,
+                  padding: 1,
                 },
               }}
             >
@@ -49,8 +57,8 @@ export default function ProdectDetail() {
                     },
                     largeImage: {
                       src: product.image,
-                      width: 600,
-                      height: 800,
+                      width: 1200,
+                      height: 1800,
                     },
                     isHintEnabled: true,
                     shouldHideHintAfterFirstActivation: false,
@@ -59,8 +67,13 @@ export default function ProdectDetail() {
               </Paper>
             </Box>
           </ImageContainer>
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
+          <Title>{product.title}</Title>
+          <Price>{`$${Number(product.price).toFixed(2)}`}</Price>
+          <RatingContainer>
+            <Rating name="simple-controlled" value={product.rating.rate} />
+            <p>{product.rating.count}</p>
+          </RatingContainer>
+          <p>{product.description.toLocaleString()}</p>
         </Root>
       )}
     </div>

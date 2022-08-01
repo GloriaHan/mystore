@@ -12,3 +12,22 @@ export const Root = styled.div`
 export const ImageContainer = styled.div`
   grid-row: 1 / 5;
 `;
+
+export const Title = styled.div`
+  font-size: 32px;
+  font-weight: bold;
+`;
+
+export const Price = styled.div`
+  font-size: 32px;
+  font-weight: bold;
+`;
+
+export const RatingContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 10px;
+  }
+`;
