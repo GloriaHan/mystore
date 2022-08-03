@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Root, List} from "./SideBar.style";
+import { Root, List } from "./SideBar.style";
 import Box from "@mui/material/Box";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
@@ -23,7 +23,7 @@ export default function Sidebar() {
   if (loading === true) return null;
   return (
     <Root>
-       <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+      <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
         <List component="nav" aria-label="secondary mailbox folder">
           <ListItemButton onClick={() => navigate("/mystore/products")}>
             <ListItemText primary="All products" />

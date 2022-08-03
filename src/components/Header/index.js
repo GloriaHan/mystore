@@ -57,8 +57,8 @@ export default function Header() {
           </StyledButton>
         </Box>
       </SearchBar>
-      
-      <CartButton>
+
+      <CartButton to="/cart">
         <ShoppingCart fontSize="large" />
       </CartButton>
     </Root>

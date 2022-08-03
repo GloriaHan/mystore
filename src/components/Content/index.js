@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Root, Img, Title, Product,Price } from "./Content.style";
+import { Root, Img, Title, Product, Price } from "./Content.style";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -48,7 +48,13 @@ export default function Content() {
                   <Img src={item.image} alt={item.title} />
                   <Title>{item.title}</Title>
                   <Price>${item.price}</Price>
-                  <Button variant="contained" size="small" onClick={(e)=>{e.preventDefault()}}>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
                     BUY NOW
                   </Button>
                 </span>

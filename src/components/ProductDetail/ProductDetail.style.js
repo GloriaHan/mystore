@@ -13,13 +13,12 @@ export const Root = styled.div`
 export const ImageContainer = styled.div`
   grid-row: 1 / 5;
   z-index: 10;
-
 `;
 
 export const Title = styled.div`
   font-size: 32px;
   font-weight: bold;
-  color:#37474f;
+  color: #37474f;
 `;
 
 export const Price = styled.div`
@@ -38,5 +37,4 @@ export const RatingContainer = styled.div`
 export const BuyBox = styled.div`
   display: flex;
   align-items: center;
-  
 `;
