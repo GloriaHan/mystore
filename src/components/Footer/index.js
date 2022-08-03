@@ -7,7 +7,7 @@ export default function Footer() {
     <Root>
       Like it? Buy it! &nbsp;
       <ThumbUpOffAltIcon />{" "}
-      &nbsp;&nbsp;designed by GH
+      &nbsp;&nbsp;designed by GH &nbsp;&nbsp;
     </Root>
   );
 }

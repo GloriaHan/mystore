@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Button from "@mui/material/Button";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 export const Root = styled.div`
   width: 100%;
   display: flex;
-  padding: 16px;
+  /* padding: 16px; */
   align-items: center;
   background-color: #0097a7;
-  color: transparent;
 `;
 
 export const Img = styled.img`
@@ -24,4 +24,15 @@ export const SearchBar = styled.div`
 
 export const StyledButton = styled(Button)`
   background-color: #3f51b5 !important;
+`;
+
+export const ShoppingCart = styled(AddShoppingCartIcon)`
+  color: white;
+`;
+export const CartButton = styled.button`
+  color: transparent;
+  padding: 0;
+  border: 0;
+  height: 36px;
+  width: 36px;
 `;

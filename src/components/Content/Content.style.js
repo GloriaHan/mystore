@@ -4,14 +4,15 @@ export const Root = styled.div`
   display: flex;
   flex-wrap: wrap;
   background-color: #e0f7fa;
-  padding:8px;
+  padding: 8px;
 `;
 
 export const Product = styled.button`
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+
   overflow: hidden;
   margin: 10px;
-  border:hidden;
+  border: hidden;
 `;
 
 export const Img = styled.img`
@@ -20,5 +21,10 @@ export const Img = styled.img`
 `;
 export const Title = styled.p`
   height: 30px;
+  overflow: hidden;
+`;
+export const Price = styled.p`
+  height: 30px;
+  font-weight:bold;
   overflow: hidden;
 `;

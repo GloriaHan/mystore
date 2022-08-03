@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Img, Root, SearchBar, StyledButton } from "./Header.style";
+import {
+  Img,
+  Root,
+  SearchBar,
+  StyledButton,
+  ShoppingCart,
+  CartButton,
+} from "./Header.style";
 import logo from "../../assets/image/logo.png";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -45,12 +52,15 @@ export default function Header() {
             }}
             variant="contained"
             size="large"
-            backg
           >
             search
           </StyledButton>
         </Box>
       </SearchBar>
+      
+      <CartButton>
+        <ShoppingCart fontSize="large" />
+      </CartButton>
     </Root>
   );
 }

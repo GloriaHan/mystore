@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Root, Img, Title, Product } from "./Content.style";
+import { Root, Img, Title, Product,Price } from "./Content.style";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
 
 export default function Content() {
   const [loading, setLoading] = useState(false);
@@ -29,31 +30,31 @@ export default function Content() {
     <Root>
       {products &&
         products.map((item) => (
-          
-            <Box
-              key={item.id}
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                "& > :not(style)": {
-                  m: 1,
-                  width: 150,
-                  height: 200,
-                },
-              }}
-            >
-              <Paper elevation={2}>
-                <Product onClick={() => navigate(`/products/${item.id}`)}>
+          <Box
+            key={item.id}
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              "& > :not(style)": {
+                m: 1,
+                width: 180,
+                height: 240,
+              },
+            }}
+          >
+            <Paper elevation={2}>
+              <Product onClick={() => navigate(`/products/${item.id}`)}>
                 <span>
                   <Img src={item.image} alt={item.title} />
                   <Title>{item.title}</Title>
-                  <p>${item.price}</p>
+                  <Price>${item.price}</Price>
+                  <Button variant="contained" size="small" onClick={(e)=>{e.preventDefault()}}>
+                    BUY NOW
+                  </Button>
                 </span>
-                </Product>
-              </Paper>
-             
-            </Box>
-         
+              </Product>
+            </Paper>
+          </Box>
         ))}
     </Root>
   );
