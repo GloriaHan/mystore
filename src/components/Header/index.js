@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 
@@ -59,7 +60,9 @@ export default function Header() {
       </SearchBar>
 
       <CartButton to="/cart">
-        <ShoppingCart fontSize="large" />
+        <Badge badgeContent={4} color="error">
+          <ShoppingCart fontSize="large" />
+        </Badge>
       </CartButton>
     </Root>
   );
