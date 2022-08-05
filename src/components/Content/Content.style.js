@@ -10,6 +10,7 @@ export const Root = styled.div`
 export const Product = styled.div`
   background-color: #ffffff;
   display: flex;
+  flex-direction: column;
   text-align: center;
   align-items:center;
   overflow: hidden;

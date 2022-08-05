@@ -12,16 +12,17 @@ export default function Routing() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />}>
-          <Route index element={<Navigate to="mystore" />} />
-          <Route path="mystore" element={<Contents />}>
-            <Route index element={<Navigate to="welcome" />} />
+        <Route index element={<Navigate to="welcome" />} />
             <Route index path="welcome" element={<Welcome />} />
+          {/* <Route index element={<Navigate to="mystore" />} /> */}
+          <Route path="mystore" element={<Contents />}>
+            
             <Route path="products">
               <Route path=":category" element={<Content />} />
               <Route path="" element={<Content />} />
             </Route>
           </Route>
-
+         
           <Route path="products/:id" element={<ProdectDetail />} />
           <Route path="cart" element={<Cart />} />
         </Route>

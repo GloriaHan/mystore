@@ -24,9 +24,14 @@ export const SearchBar = styled.div`
 
 export const StyledButton = styled(Button)`
   background-color: #3f51b5 !important;
+
+  &:disabled {
+    color: white !important;
+    background-color: grey !important;
+  }
 `;
 
 export const ShoppingCart = styled(AddShoppingCartIcon)`
   color: white;
 `;
-export const CartButton = styled(Link)``;
+export const CartButton = styled.div``;

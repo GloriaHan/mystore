@@ -1,18 +1,21 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { Root, Img, Title, Product, Price } from "./Content.style";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { Context } from "../App/index";
+import { CartContext, InputContext } from "../App/index";
 
 export default function Content() {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState();
   const { category } = useParams();
   const navigate = useNavigate();
-  const { productsInCart, setProductsInCart } = useContext(Context);
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search");
+  const { productsInCart, setProductsInCart } = useContext(CartContext);
+  const { setInputValue } = useContext(InputContext);
 
   useEffect(() => {
     (async () => {
@@ -23,9 +26,16 @@ export default function Content() {
       const res = await fetch(url);
       const data = await res.json();
       setLoading(false);
-      setProducts(data);
+      const filterData = search
+        ? data.filter(
+            (item) =>
+              item.title.toUpperCase().includes(search.toUpperCase()) ||
+              item.description.toUpperCase().includes(search.toUpperCase())
+          )
+        : data;
+      setProducts(filterData);
     })();
-  }, [category]);
+  }, [category, search]);
 
   if (loading === true) return null;
   return (
@@ -45,34 +55,38 @@ export default function Content() {
             }}
           >
             <Paper elevation={2}>
-              <Product onClick={() => navigate(`/products/${item.id}`)}>
-                <span>
-                  <Img src={item.image} alt={item.title} />
-                  <Title>{item.title}</Title>
-                  <Price>${item.price}</Price>
-                  <Button
-                    variant="contained"
-                    size="small"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate("/cart");
-                      let result = productsInCart.find(
-                        (product) => product.id === item.id
-                      );
-                      if (result) {
-                        result.qty = result.qty + 1*1;
-                        setProductsInCart([...productsInCart]);
-                      } else {
-                        setProductsInCart([
-                          ...productsInCart,
-                          { ...item, qty:1 },
-                        ]);
-                      }
-                    }}
-                  >
-                    BUY NOW
-                  </Button>
-                </span>
+              <Product
+                onClick={() => {
+                  navigate(`/products/${item.id}`);
+                  setInputValue("");
+                }}
+              >
+                <Img src={item.image} alt={item.title} />
+                <Title>{item.title}</Title>
+                <Price>${item.price}</Price>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate("/cart");
+                    setInputValue("");
+                    let result = productsInCart.find(
+                      (product) => product.id === item.id
+                    );
+                    if (result) {
+                      result.qty = result.qty + 1 * 1;
+                      setProductsInCart([...productsInCart]);
+                    } else {
+                      setProductsInCart([
+                        ...productsInCart,
+                        { ...item, qty: 1 },
+                      ]);
+                    }
+                  }}
+                >
+                  BUY NOW
+                </Button>
               </Product>
             </Paper>
           </Box>

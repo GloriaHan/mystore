@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Img,
   Root,
@@ -14,23 +15,25 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
-import { Context } from "../App/index";
+import { CartContext, InputContext } from "../App/index";
 
 export default function Header() {
-  const [inputValue, setInputValue] = useState("");
-  const [searchValue, setSearchValue] = useState("");
-  const { productsInCart } = useContext(Context);
-
+  const { productsInCart } = useContext(CartContext);
+  const { inputValue, setInputValue } = useContext(InputContext);
+  const navigate = useNavigate();
   const productsQty =
     productsInCart.length > 0
       ? productsInCart.reduce((a, b) => a + b.qty, 0)
       : 0;
+
   return (
     <Root>
-      <Link to="/">
+      <div  onClick={() => {
+              navigate("/");
+              setInputValue("");
+            }}>
         <Img src={shoppinglogo} alt="logo" />
-      </Link>
+      </div>
       <SearchBar>
         <Paper
           component="form"
@@ -46,18 +49,17 @@ export default function Header() {
             placeholder="Buying makes us happy"
             inputProps={{ "aria-label": "Buying makes us happy" }}
             type="text"
+            value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+          <IconButton sx={{ p: "10px" }} aria-label="search">
             <SearchIcon />
           </IconButton>
         </Paper>
 
         <Box sx={{ "& button": { m: 1 } }}>
           <StyledButton
-            onClick={() => {
-              setSearchValue(inputValue);
-            }}
+            onClick={() => navigate(`/mystore/products?search=${inputValue}`)}
             variant="contained"
             size="large"
           >
@@ -66,7 +68,10 @@ export default function Header() {
         </Box>
       </SearchBar>
 
-      <CartButton to="/cart">
+      <CartButton  onClick={() => {
+              navigate("/cart");
+              setInputValue("");
+            }}>
         <Badge badgeContent={productsQty} color="error">
           <ShoppingCart fontSize="large" />
         </Badge>

@@ -1,6 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../App/index";
-import { Root, Header, Img, Title, Qty, Product, Price } from "./Cart.style";
+import React, { useContext } from "react";
+import { CartContext } from "../App/index";
+import {
+  Root,
+  Th,
+  Img,
+  Title,
+  Qty,
+  Product,
+  Price,
+  Table,
+  Tr,
+  Td,
+  Thead,
+  Tbody,
+  Header,
+  Container,
+  StyledButton,
+} from "./Cart.style";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -8,11 +24,10 @@ import Select from "@mui/material/Select";
 import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
 import ChipDelete from "@mui/joy/ChipDelete";
+import Button from "@mui/material/Button";
 
 export default function Cart() {
-  const [qty, setQty] = React.useState(0);
-  const [product, setProduct] = useState("");
-  const { productsInCart, setProductsInCart } = useContext(Context);
+  const { productsInCart, setProductsInCart } = useContext(CartContext);
 
   const productsQty =
     productsInCart.length > 0
@@ -23,21 +38,11 @@ export default function Cart() {
     productsInCart.length > 0
       ? productsInCart.reduce((a, b) => a + b.qty * b.price, 0)
       : 0;
-  const handleChange = (e, item) => {
-    setQty(e.target.value);
-    setProduct(item);
-  };
 
-  console.log(product);
-
-  useEffect(() => {
-    addToCart();
-  }, [qty, product]);
-
-  const addToCart = () => {
-    let result = productsInCart.find((item) => item.id === product.id);
+  const addToCart = (e, item) => {
+    let result = productsInCart.find((itemObj) => itemObj.id === item.id);
     if (result) {
-      result.qty = qty;
+      result.qty = e.target.value;
       setProductsInCart([...productsInCart]);
     }
   };
@@ -49,74 +54,83 @@ export default function Cart() {
   };
   return (
     <Root>
-      <h1>Your shopping Cart : {productsQty} items </h1>
-      <Header>
-        <span>Product</span>
-        <span>Quantity</span>
-        <span>Unit Price</span>
-        <span>Sub-Total</span>
-      </Header>
-      {productsInCart.map((item) => (
-        <Product key={item.id}>
-          <Img src={item.image} alt={item.title} />
-          <Title>{item.title}</Title>
-          <Qty>
-            {" "}
-            Qty:
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-              <InputLabel id="demo-select-small">Qty</InputLabel>
-              <Select
-                labelId="demo-select-small"
-                id="demo-select-small"
-                value={item.qty}
-                label="Qty"
-                onChange={(e) => handleChange(e, item)}
-              >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={6}>6</MenuItem>
-                <MenuItem value={7}>7</MenuItem>
-                <MenuItem value={8}>8</MenuItem>
-                <MenuItem value={9}>9</MenuItem>
-                <MenuItem value={10}>10</MenuItem>
-                <MenuItem value={11}>11</MenuItem>
-                <MenuItem value={12}>12</MenuItem>
-                <MenuItem value={13}>13</MenuItem>
-                <MenuItem value={14}>14</MenuItem>
-                <MenuItem value={15}>15</MenuItem>
-                <MenuItem value={16}>16</MenuItem>
-                <MenuItem value={17}>17</MenuItem>
-                <MenuItem value={18}>18</MenuItem>
-                <MenuItem value={19}>19</MenuItem>
-                <MenuItem value={20}>20</MenuItem>
-              </Select>
-            </FormControl>
-          </Qty>
-          <Qty>Qty: {item.qty}</Qty>
-          <Price>${item.price}</Price>
-          <Price>${item.qty * item.price}</Price>
-          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-            <Chip
-            onClick={(e) => deleteProduct(e, item)}
-              variant="outlined"
-              color="danger"
-              endDecorator={<ChipDelete />}
-            >
-              Delete
-            </Chip>
-          </Box>
-        </Product>
-      ))}
+      <Header>Your shopping Cart : {productsQty} items </Header>
+      <Container>
+        <Table>
+          <Thead>
+            <Tr>
+              <Th>Product</Th>
+              <Th>Quantity</Th>
+              <Th>Unit Price</Th>
+              <Th>Sub-Total</Th>
+              <Th></Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {productsInCart.map((item) => (
+              <Tr key={item.id}>
+                <Td>
+                  <Product>
+                    <Img src={item.image} alt={item.title} />
+                    <Title>{item.title}</Title>
+                  </Product>
+                </Td>
+                <Td>
+                  <Qty>
+                    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                      <InputLabel id="demo-select-small">Qty</InputLabel>
+                      <Select
+                        labelId="demo-select-small"
+                        id="demo-select-small"
+                        value={item.qty}
+                        label="Qty"
+                        onChange={(e) => addToCart(e, item)}
+                      >
+                        {new Array(20).fill(1).map((item, index) => (
+                          <MenuItem key={index} value={index + 1}>
+                            {index + 1}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Qty>
+                </Td>
+                <Td>
+                  <Price>${item.price}</Price>
+                </Td>
+                <Td>
+                  <Price>
+                    {`$${Number(item.qty * item.price).toFixed(2)}`}
+                  </Price>
+                </Td>
+                <Td>
+                  <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+                    <Chip
+                      onClick={(e) => deleteProduct(e, item)}
+                      variant="outlined"
+                      color="danger"
+                      endDecorator={<ChipDelete />}
+                    >
+                      Delete
+                    </Chip>
+                  </Box>
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Container>
 
-      <div>
-        <p>items: {productsQty}</p>
-        <p>Post fee : Free</p>
-        <p>Total: ${totalPrice}</p>
-      <button>Checkout</button>
-      </div>
+      <Container className="checkout">
+        <div>
+          <StyledButton variant="contained">Checkout</StyledButton>
+          <p>items: {productsQty}</p>
+          <p>Post fee : Free</p>
+        </div>
+        <div>
+          <p>Total: ${totalPrice}</p>
+        </div>
+      </Container>
     </Root>
   );
 }

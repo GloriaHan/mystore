@@ -8,3 +8,7 @@ export const Root = styled.div`
   align-items: center;
   justify-content:right;
 `;
+export const Img = styled.img`
+  height: 40px;
+  width:40px;
+`;
