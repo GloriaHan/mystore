@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Img,
   Root,
@@ -7,7 +7,7 @@ import {
   ShoppingCart,
   CartButton,
 } from "./Header.style";
-import logo from "../../assets/image/logo.png";
+import shoppinglogo from "../../assets/image/shoppinglogo.png";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
@@ -15,14 +15,21 @@ import SearchIcon from "@mui/icons-material/Search";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
+import { Context } from "../App/index";
 
 export default function Header() {
   const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const { productsInCart } = useContext(Context);
+
+  const productsQty =
+    productsInCart.length > 0
+      ? productsInCart.reduce((a, b) => a + b.qty, 0)
+      : 0;
   return (
     <Root>
       <Link to="/">
-        <Img src={logo} alt="logo" />
+        <Img src={shoppinglogo} alt="logo" />
       </Link>
       <SearchBar>
         <Paper
@@ -60,7 +67,7 @@ export default function Header() {
       </SearchBar>
 
       <CartButton to="/cart">
-        <Badge badgeContent={4} color="error">
+        <Badge badgeContent={productsQty} color="error">
           <ShoppingCart fontSize="large" />
         </Badge>
       </CartButton>

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import ReactImageMagnify from "react-image-magnify";
+import { Context } from "../App/index";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
@@ -22,7 +23,9 @@ export default function ProdectDetail() {
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState();
   const { id } = useParams();
+  const navigate = useNavigate();
   const [qty, setQty] = React.useState(1);
+  const { productsInCart, setProductsInCart } = useContext(Context);
 
   const handleChange = (event) => {
     setQty(event.target.value);
@@ -34,12 +37,21 @@ export default function ProdectDetail() {
       setLoading(true);
       const res = await fetch(url);
       const data = await res.json();
-      console.log(url);
       setLoading(false);
       setProduct(data);
     })();
   }, [id]);
+  console.log(productsInCart);
 
+  const addToCart = () => {
+    let result = productsInCart.find((item) => item.id === product.id);
+    if (result) {
+      result.qty = result.qty + qty;
+      setProductsInCart([...productsInCart]);
+    } else {
+      setProductsInCart([...productsInCart, { ...product, qty }]);
+    }
+  };
   if (loading === true) return null;
   return (
     <div>
@@ -111,10 +123,21 @@ export default function ProdectDetail() {
                   </Select>
                 </FormControl>
 
-                <Button variant="contained" size="large">
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => addToCart()}
+                >
                   ADD TO CART
                 </Button>
-                <Button variant="contained" size="large">
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => {
+                    addToCart();
+                    navigate("/cart");
+                  }}
+                >
                   BUY NOW
                 </Button>
               </div>

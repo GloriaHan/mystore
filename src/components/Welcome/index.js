@@ -12,7 +12,11 @@ export default function Welcome() {
       <h2>WELCOME TO THE OUR STORE !</h2>
       <h3>It's time to treat yourself.</h3>
       <div>
-        <Button onClick={() => navigate(`/mystore/products`)} variant="contained" size="large">
+        <Button
+          onClick={() => navigate(`/mystore/products`)}
+          variant="contained"
+          size="large"
+        >
           Shopping Now
         </Button>
       </div>
