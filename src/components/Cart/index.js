@@ -111,11 +111,11 @@ export default function Cart() {
         </Product>
       ))}
 
-      <button>Checkout</button>
       <div>
         <p>items: {productsQty}</p>
         <p>Post fee : Free</p>
         <p>Total: ${totalPrice}</p>
+      <button>Checkout</button>
       </div>
     </Root>
   );
