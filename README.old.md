@@ -1,2 +1,0 @@
-# mystore
-final project1
