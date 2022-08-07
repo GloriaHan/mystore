@@ -5,12 +5,13 @@ export const Root = styled.div`
   flex-wrap: wrap;
   background-color: #e0f7fa;
   padding: 8px;
-  div {
-    color: #37474f;
-    text-align: center;
-  }
 `;
 
+export const NoResult = styled.div`
+  color: #37474f;
+  text-align: center;
+  width:100%;
+`;
 export const Product = styled.div`
   background-color: #ffffff;
   display: flex;

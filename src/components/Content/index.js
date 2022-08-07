@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { Root, Img, Title, Product, Price } from "./Content.style";
+import { Root, Img, Title, Product, Price,NoResult } from "./Content.style";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -41,10 +41,10 @@ export default function Content() {
   return (
     <Root>
       {products.length <= 0 ? (
-        <div>
+        <NoResult>
           <h3>Sorry, nothing matched your search.</h3>
           <h3>Please search again.</h3>
-        </div>
+        </NoResult>
       ) : (
         products &&
         products.map((item) => (
