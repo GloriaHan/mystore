@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactImageMagnify from "react-image-magnify";
-import { Context } from "../App/index";
+import { CartContext } from "../App/index";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
@@ -25,7 +25,7 @@ export default function ProdectDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [qty, setQty] = React.useState(1);
-  const { productsInCart, setProductsInCart } = useContext(Context);
+  const { productsInCart, setProductsInCart } = useContext(CartContext);
 
   const handleChange = (event) => {
     setQty(event.target.value);
@@ -41,7 +41,6 @@ export default function ProdectDetail() {
       setProduct(data);
     })();
   }, [id]);
-  console.log(productsInCart);
 
   const addToCart = () => {
     let result = productsInCart.find((item) => item.id === product.id);

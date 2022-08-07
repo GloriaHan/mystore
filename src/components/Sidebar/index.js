@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Root, List } from "./SideBar.style";
 import Box from "@mui/material/Box";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { InputContext } from "../App/index";
 
 export default function Sidebar() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState();
   const navigate = useNavigate();
+  const { category } = useParams();
+  const { setInputValue } = useContext(InputContext);
 
   useEffect(() => {
     (async () => {
@@ -25,16 +28,26 @@ export default function Sidebar() {
     <Root>
       <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
         <List component="nav" aria-label="secondary mailbox folder">
-          <ListItemButton onClick={() => navigate("/mystore/products")}>
+          <ListItemButton
+            onClick={() => {
+              navigate("/mystore/products");
+              setInputValue("");
+            }}
+            selected={category === undefined}
+          >
             <ListItemText primary="All products" />
           </ListItemButton>
 
-          {categories?.map((category) => (
+          {categories?.map((item) => (
             <ListItemButton
-              key={category}
-              onClick={() => navigate(`/mystore/products/${category}`)}
+              key={item}
+              onClick={() => {
+                navigate(`/mystore/products/${item}`);
+                setInputValue("");
+              }}
+              selected={item === category}
             >
-              <ListItemText primary={category} />
+              <ListItemText primary={item} />
             </ListItemButton>
           ))}
         </List>

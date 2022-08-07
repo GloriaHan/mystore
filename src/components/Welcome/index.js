@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { Root } from "./Welcome.style";
 import Button from "@mui/material/Button";
@@ -9,11 +9,11 @@ export default function Welcome() {
   return (
     <Root>
       <h1> Homepage</h1>
-      <h2>WELCOME TO THE OUR STORE !</h2>
+      <h2>WELCOME TO MYSTORE !</h2>
       <h3>It's time to treat yourself.</h3>
       <div>
         <Button
-          onClick={() => navigate(`/mystore/products`)}
+          onClick={() => {navigate(`/mystore/products`)}}
           variant="contained"
           size="large"
         >
