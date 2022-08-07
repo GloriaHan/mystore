@@ -24,7 +24,6 @@ import Select from "@mui/material/Select";
 import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
 import ChipDelete from "@mui/joy/ChipDelete";
-import Button from "@mui/material/Button";
 
 export default function Cart() {
   const { productsInCart, setProductsInCart } = useContext(CartContext);

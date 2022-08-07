@@ -5,6 +5,10 @@ export const Root = styled.div`
   flex-wrap: wrap;
   background-color: #e0f7fa;
   padding: 8px;
+  div {
+    color: #37474f;
+    text-align: center;
+  }
 `;
 
 export const Product = styled.div`
@@ -12,7 +16,7 @@ export const Product = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  align-items:center;
+  align-items: center;
   overflow: hidden;
   margin: 10px;
   border: hidden;
@@ -30,5 +34,5 @@ export const Price = styled.p`
   height: 30px;
   font-weight: bold;
   overflow: hidden;
-  margin:0;
+  margin: 0;
 `;

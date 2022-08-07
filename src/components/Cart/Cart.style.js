@@ -99,7 +99,9 @@ export const Container = styled.div`
   &.checkout {
     padding: 10px;
     height: fit-content !important;
-
+    div {
+      font-weight: 700;
+    }
     div:first-child {
       border-bottom: 1px solid black;
     }

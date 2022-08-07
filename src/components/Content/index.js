@@ -9,7 +9,7 @@ import { CartContext, InputContext } from "../App/index";
 
 export default function Content() {
   const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
   const { category } = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -40,7 +40,13 @@ export default function Content() {
   if (loading === true) return null;
   return (
     <Root>
-      {products &&
+      {products.length <= 0 ? (
+        <div>
+          <h3>Sorry, nothing matched your search.</h3>
+          <h3>Please search again.</h3>
+        </div>
+      ) : (
+        products &&
         products.map((item) => (
           <Box
             key={item.id}
@@ -90,7 +96,8 @@ export default function Content() {
               </Product>
             </Paper>
           </Box>
-        ))}
+        ))
+      )}
     </Root>
   );
 }
