@@ -2,7 +2,6 @@ import React from "react";
 import { Root, Img, Paymethods, SocialMedia, ContactUs } from "./Footer.style";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import Button from "@mui/material/Button";
-import Box from '@mui/material/Box';
 export default function Footer() {
   return (
     <Root>

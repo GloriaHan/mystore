@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Link } from "react-router-dom";
 
 export const Root = styled.div`
   display: flex;
