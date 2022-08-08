@@ -13,7 +13,9 @@ export default function Welcome() {
       <h3>It's time to treat yourself.</h3>
       <div>
         <Button
-          onClick={() => {navigate(`/mystore/products`)}}
+          onClick={() => {
+            navigate(`/mystore/products`);
+          }}
           variant="contained"
           size="large"
         >
