@@ -105,6 +105,7 @@ export default function ProdectDetail() {
                   <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
+                    data-testid="demo-select-small"
                     value={qty}
                     label="Qty"
                     onChange={handleChange}

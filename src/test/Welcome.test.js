@@ -28,7 +28,7 @@ describe("Render Test", function () {
     expect(container).toMatchSnapshot();
   });
 
-  it("case: click button to trigger useNavigate", async () => {
+  it("case: click button to trigger useNavigate", () => {
     render(
       <InputContext.Provider value={{}}>
         <CartContext.Provider value={{ productsInCart }}>
@@ -40,6 +40,6 @@ describe("Render Test", function () {
     );
 
     fireEvent.click(screen.getByText("Shopping Now"));
-    await expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
+    expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
   });
 });
