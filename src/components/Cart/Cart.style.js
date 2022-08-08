@@ -95,6 +95,9 @@ export const Header = styled.h1`
 
 export const Container = styled.div`
   border: 1px solid black;
+  
+  overflow:auto;
+
 
   &.checkout {
     padding: 10px;
