@@ -7,8 +7,11 @@
 # Getting Started
 
 git clone https://github.com/GloriaHan/mystore;
+
 cd mystore;
+
 yarn install;
+
 yarn start;
 
 # API
