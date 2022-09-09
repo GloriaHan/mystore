@@ -1,6 +1,6 @@
 # Demo
 
-**Please click __[here](http://mystore-gh.s3-website-ap-southeast-2.amazonaws.com/welcome)__ to see the demo**.
+**Please click _[here](http://mystore-gh.s3-website-ap-southeast-2.amazonaws.com/welcome)_ to see the demo**.
 
 # Getting Started
 
@@ -10,5 +10,6 @@ yarn install;
 yarn start;
 
 # API
-Api provided by @MohammadReza Keikavousi
+Api provided by @keikaavousi
+
 https://fakestoreapi.com
