@@ -1,6 +1,6 @@
 # Demo
 
-Please click [here](http://mystore-gh.s3-website-ap-southeast-2.amazonaws.com/welcome) to see the demo.
+**Please click __[here](http://mystore-gh.s3-website-ap-southeast-2.amazonaws.com/welcome)__ to see the demo**.
 
 # Getting Started
 
