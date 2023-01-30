@@ -161,7 +161,7 @@ exports[`Render Test case: expect rendering correct 1`] = `
       <div>
         <p>
           Total: $
-          $0.00
+          0.00
         </p>
       </div>
     </div>
