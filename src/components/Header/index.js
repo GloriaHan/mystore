@@ -46,8 +46,8 @@ export default function Header() {
         >
           <InputBase
             sx={{ ml: 1, flex: 1 }}
-            placeholder="Buying makes us happy"
-            inputProps={{ "aria-label": "Buying makes us happy" }}
+            placeholder="Shopping makes me happy~~"
+            inputProps={{ "aria-label": "Shopping makes me happy~~" }}
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
