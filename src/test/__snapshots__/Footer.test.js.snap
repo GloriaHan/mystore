@@ -72,9 +72,9 @@ exports[`Render Test case: expect rendering correct 1`] = `
           class="MuiInputBase-root MuiInputBase-colorPrimary css-piqts5-MuiInputBase-root"
         >
           <input
-            aria-label="Buying makes us happy"
+            aria-label="Shopping makes me happy~~"
             class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
-            placeholder="Buying makes us happy"
+            placeholder="Shopping makes me happy~~"
             type="text"
             value=""
           />
