@@ -6,7 +6,6 @@ export default function Footer() {
   return (
     <Root>
       <Paymethods>
-        <span>Payment methods: &nbsp;</span>
         <Img
           src="https://cdn-icons-png.flaticon.com/512/39/39196.png"
           alt="visa"

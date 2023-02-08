@@ -5,7 +5,8 @@ export const Root = styled.div`
   width: 100%;
   background-color: #00acc1;
   color: white;
-  display: flex;
+  display: grid;
+  grid-template-columns: 30% 40% 20%;
   align-items: center;
   justify-content: center;
 `;
@@ -16,9 +17,11 @@ export const Img = styled.img`
 `;
 
 export const Paymethods = styled.div`
+  padding-left: 100px;
   padding-right: 100px;
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const SocialMedia = styled.div`

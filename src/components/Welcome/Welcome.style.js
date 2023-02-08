@@ -6,4 +6,9 @@ export const Root = styled.div`
   background-size: cover;
   color: #455a64;
   width: 100%;
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
 `;
