@@ -7,6 +7,10 @@ export const Root = styled.div`
   height: 100%;
   padding: 30px;
   grid-gap: 20px 20px;
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    text-align: left;
+  }
 `;
 
 export const ImageContainer = styled.div`

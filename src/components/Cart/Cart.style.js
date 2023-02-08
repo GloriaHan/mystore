@@ -9,6 +9,11 @@ export const Root = styled.div`
   background-color: #e0f7fa;
   padding: 20px;
   width: 100%;
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    height:100%
+  }
 `;
 export const Th = styled.th`
   /* display: flex; */
@@ -108,6 +113,17 @@ export const Container = styled.div`
     div:first-child {
       border-bottom: 1px solid black;
     }
+    @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    height:100%
+  }
+    
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    height:100%
   }
 `;
 
