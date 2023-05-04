@@ -17,3 +17,6 @@ yarn start;
 Api provided by @keikaavousi
 
 https://fakestoreapi.com
+
+# Technologies 
+React, Rudex, Router, MUI 
